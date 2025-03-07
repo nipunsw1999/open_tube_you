@@ -1,2 +1,5 @@
 streamlit
 pytube 
+requests
+PyBitTorrent
+yt-dlp

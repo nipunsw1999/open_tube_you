@@ -1,18 +1,12 @@
-import streamlit as st 
-from pytube import YouTube
+import streamlit as st
+import yt_dlp
 
 st.title("Video Downloader")
 
-url = st.text_input("Enter the video URL")
-check = st.button("Check")
+video_url = st.text_input("Enter video URL")
 
-
-if check and url !="":
-    try:
-        with st.spinner("Wait for it...", show_time=True):
-            yt = YouTube(url)
-        st.success("Done!")
-        st.write("Title:", yt.title)
-        st.image(yt.thumbnail_url)
-    except Exception as e:
-        st.write(e)
+if video_url:
+    st.write("Fetching video details...")
+    with yt_dlp.YoutubeDL() as ydl:
+        video_info = ydl.extract_info(video_url, download=False)
+        st.write(video_info)
