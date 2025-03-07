@@ -1,5 +1,6 @@
 import streamlit as st
 from pytubefix import YouTube
+from functions import duration_show
 
 st.title("Video Downloader")
 
@@ -11,6 +12,7 @@ with tab1:
         yt = YouTube(video_url)
         st.write(yt.title)
         st.image(yt.thumbnail_url)
+        st.write(duration_show(yt.length))
         select_resolution = st.selectbox("Select resolution", ["1080", "720", "480", "360"])
         download_btn = st.button("Download video")
         if select_resolution:
