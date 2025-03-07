@@ -10,8 +10,8 @@ with tab1:
     video_url = st.text_input("Enter video URL")
     if video_url:
         yt = YouTube(video_url)
-        st.write(yt.title)
         st.image(yt.thumbnail_url)
+        st.write(yt.title)
         st.write(duration_show(yt.length))
         select_resolution = st.selectbox("Select resolution", ["1080", "720", "480", "360"])
         download_btn = st.button("Download video")
